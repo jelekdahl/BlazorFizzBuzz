@@ -1,0 +1,84 @@
+﻿@page "/themes"
+@inject IJSRuntime JS
+
+<PageTitle>Template Themes</PageTitle>
+
+<div class="mt-5">
+    <h1 class="text-center">Built in themes for your template</h1>
+
+    <div class="d-flex flex-wrap gap-3 align-items-center justify-content-center my-3">
+        @foreach (string theme in siteThemes)
+        {
+            <div class="card" data-je-theme="@theme">
+                <div class="card-body">
+                    <h3 class="card-title d-flex align-items-center">
+                        Theme:&nbsp;<span style="color: var(--je-theme-core);">@theme</span>
+                        <button class="ms-auto btn btn-sm btn-primary"
+                            @onclick="()=>ChangeTheme(theme)">Set Theme</button>
+                    </h3>
+                    
+                    <h6 class="small fw-bold text-center">Palette</h6>
+                    
+                    <div class="d-flex gap-0 align-items-center justify-content-center">
+                        @foreach(string weight in weights)
+                        {
+                            <div style="background-color: var(--je-theme-@weight); width: 16px; height: 16px;"></div>
+                        }
+                    </div>
+                    
+                    <div class="my-3 d-flex flex-row flex-wrap justify-content-center">
+                        <button class="btn btn-primary m-2">Primary Button</button>
+                        <button class="btn btn-light m-2">Light Button</button>
+                        <button class="btn btn-dark m-2">Dark Button</button>
+                    </div>
+                    
+                    <div class="text-center">
+                        Text with a <a href="#">clickable link</a> in the middle.
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@code {
+
+    public async Task ChangeTheme(string theme)
+    {
+        //setTheme & storeTheme is defined in index.html
+        await JS.InvokeVoidAsync("tryThemeTransition", theme);
+        await JS.InvokeVoidAsync("storeTheme", theme);
+    }
+
+    List<string> siteThemes = new ()
+    {
+        "code-magic",
+        "blue",
+        "indigo",
+        "purple",
+        "pink",
+        "red",
+        "orange",
+        "yellow",
+        "green",
+        "teal",
+        "cyan",
+        "gray"
+    };
+
+    List<string> weights = new()
+    {
+        "core",
+        "100",
+        "150",
+        "200",
+        "300",
+        "400",
+        "500",
+        "600",
+        "700",
+        "800",
+        "850",
+        "900"
+    };
+}

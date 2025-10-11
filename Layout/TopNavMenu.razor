@@ -1,0 +1,96 @@
+﻿@inject IJSRuntime JS
+@using System.Linq;
+
+<nav id="topNavMenu" class="navbar navbar-expand-md navStyle" data-bs-theme="dark">
+    <div class="container-xxl">
+        <a href="/" class="me-3">
+            <img src="/images/je_logo_only_dark.svg" height="40" />
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle Navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!--Menu Links-->
+        <div class="collapse navbar-collapse" id="navbarContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <NavLink class="nav-link" href="/" Match="NavLinkMatch.All">
+                        <i class="bi bi-house"></i>
+                        <span>Home</span>
+                    </NavLink>
+                </li>
+                <li class="nav-item">
+                    <NavLink class="nav-link" href="/fizzbuzz" Match="NavLinkMatch.All">
+                        <i class="bi bi-code"></i>
+                        <span>FizzBuzz</span>
+                    </NavLink>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
+                            data-bs-auto-close="outside">
+                        <i class="bi bi-palette"></i>
+                        <span>Themes</span>
+                    </a>
+                    <ul class="dropdown-menu text-nowrap px-2 m-2">
+                        <li class="nav-item">
+                            <NavLink class="nav-link" href="/themes"
+                                    onclick="this.parentElement.parentElement.classList.remove('show');">
+                                <i class="bi bi-eye"></i>
+                                <span>View Details</span>
+                            </NavLink>
+                        </li>
+                        <li class="nav-item">
+                            <div class="nav-link d-flex gap-0 align-items-center">
+                                @foreach (string theme in siteThemes)
+                                {
+                                    string themeUpper = string.Join("-", theme.Split("-").Select(
+                                        word => char.ToUpper(word[0]) + word.Substring(1)
+                                    ));
+
+                                    <button type="button" data-bs-custom-class="je-theme-@theme"
+                                        @onclick="() => ChangeTheme(theme)"
+                                        data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                        title="@(themeUpper)" data-bs-title="@(themeUpper)"
+                                        style="background-color: var(--je-@(theme)-core); width: 25px; height: 25px;"></button>
+                                }
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+@code {
+    List<string> siteThemes = new()
+    {
+        "code-magic",
+        "blue",
+        "indigo",
+        "purple",
+        "pink",
+        "red",
+        "orange",
+        "yellow",
+        "green",
+        "teal",
+        "cyan",
+        "gray"
+    };
+
+    public async Task ChangeTheme(string theme)
+    {
+        //setTheme & storeTheme is defined in index.html
+        await JS.InvokeVoidAsync("tryThemeTransition", theme);
+        await JS.InvokeVoidAsync("storeTheme", theme);
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JS.InvokeVoidAsync("enableTooltips", "#topNavMenu");
+        }
+    }
+}

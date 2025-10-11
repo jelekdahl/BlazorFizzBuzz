@@ -1,0 +1,30 @@
+﻿.footerStyle {
+    background-color: var(--je-theme-900);
+}
+
+    .footerStyle a {
+        color: var(--je-theme-200);
+    }
+
+        .footerStyle a:hover {
+            color: var(--je-theme-core);
+        }
+
+.bi {
+    font-size: 1.5rem;
+    padding-inline-start: .5rem;
+}
+
+.personal-link > img {
+    -webkit-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
+}
+
+.personal-link:hover > img,
+.personal-link:focus > img,
+.personal-link:active > img {
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+}
