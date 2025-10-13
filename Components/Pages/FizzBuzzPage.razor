@@ -1,5 +1,4 @@
 ﻿@page "/fizzbuzz"
-@using System.Diagnostics;
 
 <div class="container-xxl my-3">
     <h3>Solve the FizzBuzz Challenge</h3>
@@ -39,24 +38,47 @@
                             <ValidationMessage For="@(() => fizzBuzz.StopValue)" />
                         </div>
                     </div>
-                    <div class="row justify-content-center">
-                        <div class="mt-3 col-12 col-sm-6 col-md-4 col-lg-6">
-                            <button type="submit" class="btn btn-primary w-100 mt-2"
-                                    aria-label="Generate FizzBuzz Results">
-                                Generate
-                            </button>
+                    <div class="mt-4 row justify-content-center">
+                        <div class="row col-12 col-sm-8 col-md-6 col-lg-12">
+                            <div class="col-6 ps-0">
+                                <button type="submit" class="btn btn-primary w-100"
+                                        aria-label="Generate FizzBuzz Results">
+                                    Generate
+                                </button>
+                            </div>
+                            <div class="col-6 pe-0">
+                                <button type="button" class="btn btn-secondary w-100"
+                                        @onclick="ClearResults" aria-label="Generate FizzBuzz Results">
+                                    Clear
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </EditForm>
         </div>
+        @if (fizzBuzzResults.Count > 0)
+        {
+            <div class="col-12 col-lg-6 col-xl-7 mt-4 mt-lg-0">
+                <div class="border border-secondary-subtle rounded p-4">
+                    <h4 class="border-bottom">FizzBuzz Results</h4>
+
+                    <div class="resultsContainer overflow-y-auto row row-cols-5 text-center">
+                        @foreach (var result in fizzBuzzResults)
+                        {
+                            <FizzBuzzItem FizzBuzzValue="@result" />
+                        }
+                    </div>
+                </div>
+            </div>
+        }
     </div>
 </div>
 
 @code {
     private FizzBuzz fizzBuzz = new();
     private List<string> fizzBuzzResults = new();
-    
+
     private void GenerateFizzBuzzResults()
     {
         fizzBuzzResults.Clear();
@@ -89,5 +111,10 @@
                 fizzBuzzResults.Add(i.ToString());
             }
         }
+    }
+
+    private void ClearResults()
+    {
+        fizzBuzzResults.Clear();
     }
 }

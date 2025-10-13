@@ -1,42 +1,56 @@
 ﻿:root {
-    --je-theme-core: var(--je-code-magic-core);
+    --je-theme-core: var(--je-fizz-buzz-core);
     /* app background */
-    --je-theme-100: var(--je-code-magic-100);
+    --je-theme-100: var(--je-fizz-buzz-100);
     /* subtle background */
-    --je-theme-150: var(--je-code-magic-150);
+    --je-theme-150: var(--je-fizz-buzz-150);
     /* UI element background */
-    --je-theme-200: var(--je-code-magic-200);
+    --je-theme-200: var(--je-fizz-buzz-200);
     /* hovered UI background */
-    --je-theme-300: var(--je-code-magic-300);
+    --je-theme-300: var(--je-fizz-buzz-300);
     /* active UI */
-    --je-theme-400: var(--je-code-magic-400);
+    --je-theme-400: var(--je-fizz-buzz-400);
     /* selected UI */
-    --je-theme-500: var(--je-code-magic-500);
+    --je-theme-500: var(--je-fizz-buzz-500);
     /* subtle borders and spearators */
-    --je-theme-600: var(--je-code-magic-600);
+    --je-theme-600: var(--je-fizz-buzz-600);
     /* element border / focus rings */
-    --je-theme-700: var(--je-code-magic-700);
+    --je-theme-700: var(--je-fizz-buzz-700);
     /* hovered border  */
-    --je-theme-800: var(--je-code-magic-800);
+    --je-theme-800: var(--je-fizz-buzz-800);
     /* hovered dark backgrounds */
-    --je-theme-850: var(--je-code-magic-850);
+    --je-theme-850: var(--je-fizz-buzz-850);
     /* dark backgrounds */
-    --je-theme-900: var(--je-code-magic-900);
+    --je-theme-900: var(--je-fizz-buzz-900);
+    /* backgrounds for fizz items */
+    --je-fizz-bg-color: var(--je-theme-200);
+    /* backgrounds for buzz items */
+    --je-buzz-bg-color: var(--je-theme-500);
+    /* backgrounds for fizzbuzz items */
+    --je-fizzbuzz-bg-color: var(--je-theme-core);
+    /* text for fizz items */
+    --je-fizz-text-color: var(--je-dark-color);
+    /* text for buzz items */
+    --je-buzz-text-color: var(--je-light-color);
+    /* text for fizzbuzz items */
+    --je-fizzbuzz-text-color: var(--je-dark-color);
    
-    /* #region code-magic */
-    --je-code-magic-core: #f2c864; /* yellow accent */
-    --je-code-magic-100: hsl(192, 77%, 79%); /* turqoise */
-    --je-code-magic-150: hsl(192, 77%, 74%);
-    --je-code-magic-200: #87bbd7;
-    --je-code-magic-300: hsl(192, 77%, 69%);
-    --je-code-magic-400: #f2c864;
-    --je-code-magic-500: hsl(192, 77%, 49%);
-    --je-code-magic-600: hsl(192, 77%, 39%);
-    --je-code-magic-700: hsl(192, 77%, 29%);
-    --je-code-magic-800: hsl(192, 77%, 19%);
-    --je-code-magic-850: hsl(192, 77%, 15%);
-    --je-code-magic-900: hsl(192, 77%, 9%);
-    /* #endregion code-magic */
+    /* #region fizz-buzz */
+    --je-fizz-buzz-core: #ff993b; /* orange accent */
+    --je-fizz-buzz-dark-chocolate: #424242; /* orange accent */
+    --je-fizz-buzz-100: hsl(197, 77%, 81%); /* blue */
+    --je-fizz-buzz-150: hsl(197, 77%, 76%);
+    --je-fizz-buzz-200: #8dc7ed;
+    --je-fizz-buzz-300: hsl(197, 77%, 71%);
+    --je-fizz-buzz-400: #ff993b;
+    --je-fizz-buzz-500: hsl(197, 77%, 51%);
+    --je-fizz-buzz-600: hsl(197, 77%, 41%);
+    --je-fizz-buzz-700: hsl(197, 77%, 31%);
+    --je-fizz-buzz-800: hsl(197, 77%, 21%);
+    --je-fizz-buzz-850: hsl(197, 77%, 17%);
+    --je-fizz-buzz-900: hsl(197, 77%, 11%);
+    /* #endregion fizz-buzz */
+
     /* #region blue */
     --je-blue-core: hsl(216, 98%, 52%);
     --je-blue-100: hsl(216, 50%, 91%);
@@ -51,6 +65,7 @@
     --je-blue-850: hsl(216, 50%, 16%);
     --je-blue-900: hsl(216, 50%, 11%);
     /* #endregion blue */
+
     /* #region indigo */
     --je-indigo-core: #6610f2;
     --je-indigo-100: hsl(263, 88%, 90%);
@@ -65,6 +80,7 @@
     --je-indigo-850: hsl(263, 88%, 15%);
     --je-indigo-900: hsl(263, 88%, 10%);
     /* #endregion indigo */
+
     /* #region purple */
     --je-purple-core: #6f42c1;
     --je-purple-100: hsl(261, 52%, 90%);
@@ -79,6 +95,7 @@
     --je-purple-850: hsl(261, 52%, 15%);
     --je-purple-900: hsl(261, 52%, 10%);
     /* #endregion purple */
+
     /* #region pink */
     --je-pink-core: #d63384;
     --je-pink-100: hsl(331, 47%, 90%);
@@ -93,6 +110,7 @@
     --je-pink-850: hsl(331, 47%, 15%);
     --je-pink-900: hsl(331, 47%, 10%);
     /* #endregion pink */
+
     /* #region red */
     --je-red-core: #dc3545;
     --je-red-100: hsl(355, 70%, 91%);
@@ -107,6 +125,7 @@
     --je-red-850: hsl(355, 70%, 16%);
     --je-red-900: hsl(355, 70%, 11%);
     /* #endregion red */
+
     /* #region orange */
     --je-orange-core: #fd7e14;
     --je-orange-100: hsl(19, 50%, 91%);
@@ -121,6 +140,7 @@
     --je-orange-850: hsl(19, 50%, 16%);
     --je-orange-900: hsl(19, 50%, 11%);
     /* #endregion orange */
+
     /* #region yellow */
     --je-yellow-core: #ffc107;
     --je-yellow-100: hsl(46, 70%, 90%);
@@ -135,6 +155,7 @@
     --je-yellow-850: hsl(46, 70%, 15%);
     --je-yellow-900: hsl(46, 70%, 10%);
     /* #endregion yellow */
+
     /* #region green */
     --je-green-core: #198754;
     --je-green-100: hsl(152, 38%, 95%);
@@ -149,6 +170,7 @@
     --je-green-850: hsl(152, 38%, 20%);
     --je-green-900: hsl(152, 38%, 15%);
     /* #endregion green */
+
     /* #region teal */
     --je-teal-core: #20c997;
     --je-teal-100: hsl(162, 60%, 89%);
@@ -163,6 +185,7 @@
     --je-teal-850: hsl(162, 60%, 14%);
     --je-teal-900: hsl(162, 60%, 9%);
     /* #endregion teal */
+
     /* #region cyan */
     --je-cyan-core: #0dcaf0;
     --je-cyan-100: hsl(191, 60%, 90%);
@@ -177,6 +200,7 @@
     --je-cyan-850: hsl(191, 60%, 15%);
     --je-cyan-900: hsl(191, 60%, 10%);
     /* #endregion cyan */
+
     /* #region gray */
     --je-gray-core: #adb5bd;
     --je-gray-100: hsl(210, 17%, 98%);
@@ -192,6 +216,7 @@
     --je-gray-900: hsl(210, 17%, 18%);
     /* #endregion gray */
 }
+
 
 a {
     color: var(--je-theme-500);
@@ -240,7 +265,7 @@ a {
     font-family: var(--je-title-font) !important;
 }
 
-.je-theme-code-magic .tooltip-inner {
+.je-theme-fizz-buzz .tooltip-inner {
     color: var(--je-theme-core) !important;
 }
 
@@ -250,20 +275,26 @@ a {
 }
 
 
-[data-je-theme="code-magic"],
-.je-theme-code-magic {
-    --je-theme-core: var(--je-code-magic-core);
-    --je-theme-100: var(--je-code-magic-100);
-    --je-theme-150: var(--je-code-magic-150);
-    --je-theme-200: var(--je-code-magic-200);
-    --je-theme-300: var(--je-code-magic-300);
-    --je-theme-400: var(--je-code-magic-400);
-    --je-theme-500: var(--je-code-magic-500);
-    --je-theme-600: var(--je-code-magic-600);
-    --je-theme-700: var(--je-code-magic-700);
-    --je-theme-800: var(--je-code-magic-800);
-    --je-theme-850: var(--je-code-magic-850);
-    --je-theme-900: var(--je-code-magic-900);
+[data-je-theme="fizz-buzz"],
+.je-theme-fizz-buzz {
+    --je-theme-core: var(--je-fizz-buzz-core);
+    --je-theme-100: var(--je-fizz-buzz-100);
+    --je-theme-150: var(--je-fizz-buzz-150);
+    --je-theme-200: var(--je-fizz-buzz-200);
+    --je-theme-300: var(--je-fizz-buzz-300);
+    --je-theme-400: var(--je-fizz-buzz-400);
+    --je-theme-500: var(--je-fizz-buzz-500);
+    --je-theme-600: var(--je-fizz-buzz-600);
+    --je-theme-700: var(--je-fizz-buzz-700);
+    --je-theme-800: var(--je-fizz-buzz-800);
+    --je-theme-850: var(--je-fizz-buzz-850);
+    --je-theme-900: var(--je-fizz-buzz-900);
+    --je-fizz-bg-color: var(--je-theme-500);
+    --je-buzz-bg-color: var(--je-fizz-buzz-dark-chocolate);
+    --je-fizzbuzz-bg-color: var(--je-theme-core);
+    --je-fizz-text-color: var(--je-light-color);
+    --je-buzz-text-color: var(--je-light-color);
+    --je-fizzbuzz-text-color: var(--je-dark-color);
 }
 
 [data-je-theme="blue"],
@@ -280,6 +311,12 @@ a {
     --je-theme-800: var(--je-blue-800);
     --je-theme-850: var(--je-blue-850);
     --je-theme-900: var(--je-blue-900);
+    --je-fizz-bg-color: var(--je-theme-300);
+    --je-buzz-bg-color: var(--je-theme-700);
+    --je-fizzbuzz-bg-color: var(--je-theme-core);
+    --je-fizz-text-color: var(--je-dark-color);
+    --je-buzz-text-color: var(--je-light-color);
+    --je-fizzbuzz-text-color: var(--je-light-color);
 }
 
 [data-je-theme="indigo"],
@@ -296,6 +333,12 @@ a {
     --je-theme-800: var(--je-indigo-800);
     --je-theme-850: var(--je-indigo-850);
     --je-theme-900: var(--je-indigo-900);
+    --je-fizz-bg-color: var(--je-theme-200);
+    --je-buzz-bg-color: var(--je-theme-800);
+    --je-fizzbuzz-bg-color: var(--je-theme-core);
+    --je-fizz-text-color: var(--je-dark-color);
+    --je-buzz-text-color: var(--je-light-color);
+    --je-fizzbuzz-text-color: var(--je-light-color);
 }
 
 [data-je-theme="purple"],
@@ -312,6 +355,12 @@ a {
     --je-theme-800: var(--je-purple-800);
     --je-theme-850: var(--je-purple-850);
     --je-theme-900: var(--je-purple-900);
+    --je-fizz-bg-color: var(--je-theme-200);
+    --je-buzz-bg-color: var(--je-theme-800);
+    --je-fizzbuzz-bg-color: var(--je-theme-core);
+    --je-fizz-text-color: var(--je-dark-color);
+    --je-buzz-text-color: var(--je-light-color);
+    --je-fizzbuzz-text-color: var(--je-light-color);
 }
 
 [data-je-theme="pink"],
@@ -328,6 +377,12 @@ a {
     --je-theme-800: var(--je-pink-800);
     --je-theme-850: var(--je-pink-850);
     --je-theme-900: var(--je-pink-900);
+    --je-fizz-bg-color: var(--je-theme-200);
+    --je-buzz-bg-color: var(--je-theme-700);
+    --je-fizzbuzz-bg-color: var(--je-theme-core);
+    --je-fizz-text-color: var(--je-dark-color);
+    --je-buzz-text-color: var(--je-light-color);
+    --je-fizzbuzz-text-color: var(--je-light-color);
 }
 
 [data-je-theme="red"],
@@ -344,6 +399,12 @@ a {
     --je-theme-800: var(--je-red-800);
     --je-theme-850: var(--je-red-850);
     --je-theme-900: var(--je-red-900);
+    --je-fizz-bg-color: var(--je-theme-200);
+    --je-buzz-bg-color: var(--je-theme-700);
+    --je-fizzbuzz-bg-color: var(--je-theme-core);
+    --je-fizz-text-color: var(--je-dark-color);
+    --je-buzz-text-color: var(--je-light-color);
+    --je-fizzbuzz-text-color: var(--je-light-color);
 }
 
 [data-je-theme="orange"],
@@ -360,6 +421,12 @@ a {
     --je-theme-800: var(--je-orange-800);
     --je-theme-850: var(--je-orange-850);
     --je-theme-900: var(--je-orange-900);
+    --je-fizz-bg-color: var(--je-theme-200);
+    --je-buzz-bg-color: var(--je-theme-700);
+    --je-fizzbuzz-bg-color: var(--je-theme-core);
+    --je-fizz-text-color: var(--je-dark-color);
+    --je-buzz-text-color: var(--je-light-color);
+    --je-fizzbuzz-text-color: var(--je-dark-color);
 }
 
 [data-je-theme="yellow"],
@@ -376,6 +443,12 @@ a {
     --je-theme-800: var(--je-yellow-800);
     --je-theme-850: var(--je-yellow-850);
     --je-theme-900: var(--je-yellow-900);
+    --je-fizz-bg-color: var(--je-theme-200);
+    --je-buzz-bg-color: var(--je-theme-700);
+    --je-fizzbuzz-bg-color: var(--je-theme-core);
+    --je-fizz-text-color: var(--je-dark-color);
+    --je-buzz-text-color: var(--je-light-color);
+    --je-fizzbuzz-text-color: var(--je-dark-color);
 }
 
 [data-je-theme="green"],
@@ -392,6 +465,12 @@ a {
     --je-theme-800: hsl(152, 38%, 25%);
     --je-theme-850: hsl(152, 38%, 20%);
     --je-theme-900: hsl(152, 38%, 15%);
+    --je-fizz-bg-color: var(--je-theme-200);
+    --je-buzz-bg-color: var(--je-theme-850);
+    --je-fizzbuzz-bg-color: var(--je-theme-core);
+    --je-fizz-text-color: var(--je-dark-color);
+    --je-buzz-text-color: var(--je-light-color);
+    --je-fizzbuzz-text-color: var(--je-light-color);
 }
 
 [data-je-theme="teal"],
@@ -408,6 +487,12 @@ a {
     --je-theme-800: var(--je-teal-800);
     --je-theme-850: var(--je-teal-850);
     --je-theme-900: var(--je-teal-900);
+    --je-fizz-bg-color: var(--je-theme-150);
+    --je-buzz-bg-color: var(--je-theme-800);
+    --je-fizzbuzz-bg-color: var(--je-theme-core);
+    --je-fizz-text-color: var(--je-dark-color);
+    --je-buzz-text-color: var(--je-light-color);
+    --je-fizzbuzz-text-color: var(--je-dark-color);
 }
 
 [data-je-theme="cyan"],
@@ -424,6 +509,12 @@ a {
     --je-theme-800: var(--je-cyan-800);
     --je-theme-850: var(--je-cyan-850);
     --je-theme-900: var(--je-cyan-900);
+    --je-fizz-bg-color: var(--je-theme-150);
+    --je-buzz-bg-color: var(--je-theme-800);
+    --je-fizzbuzz-bg-color: var(--je-theme-core);
+    --je-fizz-text-color: var(--je-dark-color);
+    --je-buzz-text-color: var(--je-light-color);
+    --je-fizzbuzz-text-color: var(--je-dark-color);
 }
 
 [data-je-theme="gray"],
@@ -440,4 +531,10 @@ a {
     --je-theme-800: var(--je-gray-800);
     --je-theme-850: var(--je-gray-850);
     --je-theme-900: var(--je-gray-900);
+    --je-fizz-bg-color: var(--je-theme-150);
+    --je-buzz-bg-color: var(--je-theme-850);
+    --je-fizzbuzz-bg-color: var(--je-theme-core);
+    --je-fizz-text-color: var(--je-dark-color);
+    --je-buzz-text-color: var(--je-light-color);
+    --je-fizzbuzz-text-color: var(--je-dark-color);
 }
