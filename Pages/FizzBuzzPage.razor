@@ -1,4 +1,5 @@
 ﻿@page "/fizzbuzz"
+@using System.Diagnostics;
 
 <div class="container-xxl my-3">
     <h3>Solve the FizzBuzz Challenge</h3>
@@ -55,9 +56,38 @@
 @code {
     private FizzBuzz fizzBuzz = new();
     private List<string> fizzBuzzResults = new();
-
+    
     private void GenerateFizzBuzzResults()
     {
-        
+        fizzBuzzResults.Clear();
+        int nextFizz = fizzBuzz.FizzValue;
+        int nextBuzz = fizzBuzz.BuzzValue;
+
+        for (int i = 1; i <= fizzBuzz.StopValue; i++)
+        {
+            if (i == nextFizz)
+            {
+                if (i == nextBuzz)
+                {
+                    fizzBuzzResults.Add("FizzBuzz");
+                    nextBuzz += fizzBuzz.BuzzValue;
+                }
+                else
+                {
+                    fizzBuzzResults.Add("Fizz");
+                }
+
+                nextFizz += fizzBuzz.FizzValue;
+            }
+            else if (i == nextBuzz)
+            {
+                fizzBuzzResults.Add("Buzz");
+                nextBuzz += fizzBuzz.BuzzValue;
+            }
+            else
+            {
+                fizzBuzzResults.Add(i.ToString());
+            }
+        }
     }
 }

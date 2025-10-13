@@ -13,7 +13,7 @@ namespace BlazorFizzBuzz.Models
         public int BuzzValue { get; set; } = 5;
 
         [Required(ErrorMessage = "Please enter a Stop value")]
-        [Range(1, 1000, ErrorMessage = "Stop value must be between 1 and 1000")]
+        [Range(1, 10000, ErrorMessage = "Stop value must be between 1 and 10000")]
         public int StopValue { get; set; } = 100;
     }
 }
