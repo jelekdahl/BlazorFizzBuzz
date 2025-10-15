@@ -1,0 +1,127 @@
+﻿@page "/fizzbuzzvalidation"
+
+<div class="container-xxl my-3">
+    <h3>Solve the FizzBuzz Challenge (with Custom Validation)</h3>
+    <p>Enter your values, press the button, and see the resulting game of FizzBuzz.</p>
+
+    <div class="row">
+        <div class="col-12 col-lg-6 col-xl-5">
+            <EditForm EditContext="editContext" OnValidSubmit="GenerateFizzBuzzResults">
+                <DataAnnotationsValidator />
+                <FizzBuzzValidator />
+                <div class="border border-secondary-subtle rounded p-4">
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-1 row-gap-3 justify-content-center">
+                        <div class="col">
+                            <label for="fizzValue" class="form-label">Fizz Value</label>
+                            <InputNumber id="fizzValue" class="form-control" @bind-Value="fizzBuzz.FizzValue"
+                                placeholder="Fizz Value" aria-describedby="fizzHelp" aria-label="Fizz Value" />
+                            <div id="fizzHelp" class="form-text text-muted">
+                                Replaces multiples of this number with "Fizz"
+                            </div>
+                            <ValidationMessage For="@(() => fizzBuzz.FizzValue)" />
+                        </div>
+                        <div class="col">
+                            <label for="buzzValue" class="form-label">Buzz Value</label>
+                            <InputNumber id="buzzValue" class="form-control" @bind-Value="fizzBuzz.BuzzValue"
+                                placeholder="Buzz Value" aria-describedby="buzzHelp" aria-label="Buzz Value" />
+                            <div id="buzzHelp" class="form-text text-muted">
+                                Replaces multiples of this number with "Buzz"
+                            </div>
+                            <ValidationMessage For="@(() => fizzBuzz.BuzzValue)" />
+                        </div>
+                        <div class="col">
+                            <label for="stopValue" class="form-label">Stop Value</label>
+                            <InputNumber id="stopValue" class="form-control" @bind-Value="fizzBuzz.StopValue"
+                                placeholder="Stop Value" aria-describedby="stopHelp" aria-label="Stop Value" />
+                            <div id="stopHelp" class="form-text text-muted">
+                                Final number to count to in the sequence
+                            </div>
+                            <ValidationMessage For="@(() => fizzBuzz.StopValue)" />
+                        </div>
+                    </div>
+                    <div class="mt-4 row justify-content-center">
+                        <div class="row col-12 col-sm-8 col-md-6 col-lg-12">
+                            <div class="col-6 ps-0">
+                                <button type="submit" class="btn btn-primary w-100"
+                                        aria-label="Generate FizzBuzz Results">
+                                    Generate
+                                </button>
+                            </div>
+                            <div class="col-6 pe-0">
+                                <button type="button" class="btn btn-secondary w-100"
+                                        @onclick="ClearResults" aria-label="Generate FizzBuzz Results">
+                                    Clear
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </EditForm>
+        </div>
+        @if (fizzBuzzResults.Count > 0)
+        {
+            <div class="col-12 col-lg-6 col-xl-7 mt-4 mt-lg-0">
+                <div class="border border-secondary-subtle rounded p-4">
+                    <h4 class="border-bottom">FizzBuzz Results</h4>
+
+                    <div class="resultsContainer overflow-y-auto row row-cols-5 text-center">
+                        @foreach (var result in fizzBuzzResults)
+                        {
+                            <FizzBuzzItem FizzBuzzValue="@result" />
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@code {
+    private FizzBuzz fizzBuzz = new();
+    private List<string> fizzBuzzResults = new();
+    private EditContext editContext;
+
+    protected override void OnInitialized()
+    {
+        editContext = new EditContext(fizzBuzz);
+    }
+
+    private void GenerateFizzBuzzResults()
+    {
+        fizzBuzzResults.Clear();
+        int nextFizz = fizzBuzz.FizzValue;
+        int nextBuzz = fizzBuzz.BuzzValue;
+
+        for (int i = 1; i <= fizzBuzz.StopValue; i++)
+        {
+            if (i == nextFizz)
+            {
+                if (i == nextBuzz)
+                {
+                    fizzBuzzResults.Add("FizzBuzz");
+                    nextBuzz += fizzBuzz.BuzzValue;
+                }
+                else
+                {
+                    fizzBuzzResults.Add("Fizz");
+                }
+
+                nextFizz += fizzBuzz.FizzValue;
+            }
+            else if (i == nextBuzz)
+            {
+                fizzBuzzResults.Add("Buzz");
+                nextBuzz += fizzBuzz.BuzzValue;
+            }
+            else
+            {
+                fizzBuzzResults.Add(i.ToString());
+            }
+        }
+    }
+
+    private void ClearResults()
+    {
+        fizzBuzzResults.Clear();
+    }
+}
