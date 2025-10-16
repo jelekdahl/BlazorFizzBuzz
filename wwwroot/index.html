@@ -60,7 +60,7 @@
         };
 
         window.tryThemeTransition = (theme) => {
-            if (!document.startViewTransition) window.setTheme(theme);   
+            if (!document.startViewTransition) window.setTheme(theme);
             else document.startViewTransition(() => window.setTheme(theme));
         };
 
@@ -78,6 +78,34 @@
                     tooltipTriggerEl.onclick = () => toolTip.hide();
                 }
             );
+        }
+    </script>
+    <script>
+        window.scrollToResults = function () {
+            if (window.innerWidth < 992) {
+                var topNavMenu = document.getElementById("topNavMenu");
+                var input = document.getElementById("input");
+                if (topNavMenu && input) {
+                    window.scroll({
+                        top: input.offsetTop + input.offsetHeight + topNavMenu.offsetHeight - 20,
+                        left: 0,
+                        behavior: "auto"
+                    });
+                }
+            }
+        }
+
+        window.scrollToInput = function () {
+            if (window.innerWidth < 992) {
+                var topNavMenu = document.getElementById("topNavMenu");
+                if (topNavMenu) {
+                    window.scroll({
+                        top: topNavMenu.offsetHeight,
+                        left: 0,
+                        behavior: "auto"
+                    });
+                }
+            }
         }
     </script>
     <script src="_framework/blazor.webassembly.js"></script>

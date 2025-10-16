@@ -1,9 +1,11 @@
-﻿<div class="container-xxl my-3">
+﻿@inject IJSRuntime JS;
+
+<div class="container-xxl my-3">
     <h3>Solve the FizzBuzz Challenge</h3>
     <p>Enter your values, press the button, and see the resulting game of FizzBuzz.</p>
 
     <div class="row">
-        <div class="col-12 col-lg-6 col-xl-5">
+        <div id="input" class="col-12 col-lg-6 col-xl-5">
             <EditForm Model="fizzBuzz" OnValidSubmit="GenerateFizzBuzzResults">
                 <DataAnnotationsValidator />
                 <div class="border border-secondary-subtle rounded p-4">
@@ -37,19 +39,11 @@
                         </div>
                     </div>
                     <div class="mt-4 row justify-content-center">
-                        <div class="row col-12 col-sm-8 col-md-6 col-lg-12">
-                            <div class="col-6 ps-0">
-                                <button type="submit" class="btn btn-primary w-100"
-                                        aria-label="Generate FizzBuzz Results">
-                                    Generate
-                                </button>
-                            </div>
-                            <div class="col-6 pe-0">
-                                <button type="button" class="btn btn-secondary w-100"
-                                        @onclick="ClearResults" aria-label="Generate FizzBuzz Results">
-                                    Clear
-                                </button>
-                            </div>
+                        <div class="row col-8 col-sm-6 col-md-4 col-lg-8">
+                            <button type="submit" class="btn btn-primary w-100"
+                                    aria-label="Generate FizzBuzz Results">
+                                Generate
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -57,9 +51,15 @@
         </div>
         @if (fizzBuzzResults.Count > 0)
         {
-            <div class="col-12 col-lg-6 col-xl-7 mt-4 mt-lg-0">
+            <div id="results" class="col-12 col-lg-6 col-xl-7 mt-4 mt-lg-0">
                 <div class="border border-secondary-subtle rounded p-4">
-                    <h4 class="border-bottom">FizzBuzz Results</h4>
+                    <div class="border-bottom d-flex flex-row">
+                        <h4>FizzBuzz Results</h4>
+                        <button type="button" class="btn btn-sm btn-secondary ms-auto mb-2"
+                                @onclick="ClearResults" aria-label="Clear FizzBuzz Results">
+                            Clear
+                        </button>
+                    </div>
 
                     <div class="resultsContainer overflow-y-auto row row-cols-5 text-center">
                         @foreach (var result in fizzBuzzResults)
@@ -76,6 +76,26 @@
 @code {
     private FizzBuzz fizzBuzz = new();
     private List<string> fizzBuzzResults = new();
+    private bool scrollToResults = false;
+    private bool scrollToInput = false;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (!firstRender)
+        {
+            if (scrollToResults)
+            {
+                scrollToResults = false;
+                await JS.InvokeVoidAsync("scrollToResults");
+            }
+
+            if (scrollToInput)
+            {
+                scrollToInput = false;
+                await JS.InvokeVoidAsync("scrollToInput");
+            }
+        }
+    }
 
     private void GenerateFizzBuzzResults()
     {
@@ -109,10 +129,13 @@
                 fizzBuzzResults.Add(i.ToString());
             }
         }
+
+        scrollToResults = true;
     }
 
     private void ClearResults()
     {
         fizzBuzzResults.Clear();
+        scrollToInput = true;
     }
 }
