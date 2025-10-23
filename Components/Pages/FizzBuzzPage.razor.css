@@ -1,3 +1,9 @@
 ﻿.resultsContainer {
-    max-height: 386px;
+    max-height: calc(100vh - 1.5rem - 44px - 66px - 212px);
+}
+
+@media (min-width: 992px) {
+    .resultsContainer {
+        max-height: calc(100vh - 1.5rem - 1rem - 35px - 0.5rem - 29px - 1rem - 44px - 66px - 100px);
+    }
 }

@@ -83,11 +83,11 @@
     <script>
         window.scrollToResults = function () {
             if (window.innerWidth < 992) {
-                var topNavMenu = document.getElementById("topNavMenu");
-                var input = document.getElementById("input");
-                if (topNavMenu && input) {
+                let input = document.getElementById("input");
+                let results = document.getElementById("results");
+                if (results && input) {
                     window.scroll({
-                        top: input.offsetTop + input.offsetHeight + topNavMenu.offsetHeight - 20,
+                        top: input.offsetTop + input.offsetHeight - 50,
                         left: 0,
                         behavior: "auto"
                     });
@@ -97,10 +97,10 @@
 
         window.scrollToInput = function () {
             if (window.innerWidth < 992) {
-                var topNavMenu = document.getElementById("topNavMenu");
-                if (topNavMenu) {
+                let input = document.getElementById("input");
+                if (input) {
                     window.scroll({
-                        top: topNavMenu.offsetHeight,
+                        top: 0,
                         left: 0,
                         behavior: "auto"
                     });
