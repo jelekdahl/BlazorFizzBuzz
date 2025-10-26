@@ -4,11 +4,9 @@
 }
 
 .appLogoFillInner {
-    fill: rgba(255, 255, 255, 0);
-    transition: fill .15s ease-in-out;
+    fill: none;
 }
 
-a:hover .appLogoFill, a:active .appLogoFill, a:focus .appLogoFill,
-a:hover .appLogoFillInner, a:active .appLogoFillInner, a:focus .appLogoFillInner {
+a:hover .appLogoFill, a:active .appLogoFill, a:focus .appLogoFill {
     fill: var(--je-theme-400);
 }
