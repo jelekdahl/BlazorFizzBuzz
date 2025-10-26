@@ -1,0 +1,8 @@
+﻿.appLogoFill {
+    fill: var(--je-theme-200);
+    transition: fill .15s ease-in-out;
+}
+
+a:hover .appLogoFill, a:active .appLogoFill, a:focus .appLogoFill {
+    fill: var(--je-theme-core);
+}

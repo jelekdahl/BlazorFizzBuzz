@@ -4,6 +4,7 @@
 
     .footerStyle a {
         color: var(--je-theme-200);
+        transition: color .15s ease-in-out;
     }
 
         .footerStyle a:hover {

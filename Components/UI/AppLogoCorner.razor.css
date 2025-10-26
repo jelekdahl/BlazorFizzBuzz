@@ -1,0 +1,14 @@
+﻿.appLogoFill {
+    fill: var(--bs-navbar-color);
+    transition: fill .15s ease-in-out;
+}
+
+.appLogoFillInner {
+    fill: rgba(255, 255, 255, 0);
+    transition: fill .15s ease-in-out;
+}
+
+a:hover .appLogoFill, a:active .appLogoFill, a:focus .appLogoFill,
+a:hover .appLogoFillInner, a:active .appLogoFillInner, a:focus .appLogoFillInner {
+    fill: var(--je-theme-400);
+}
